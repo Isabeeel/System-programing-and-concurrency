@@ -4,7 +4,7 @@
 CC = gcc 
 CFLAGS_XML2 = $(shell xml2-config --cflags)
 CFLAGS_CURL = $(shell curl-config --cflags)
-CFLAGS = -Wall $(CFLAGS_XML2) $(CFLAGS_CURL) -std=gnu99 -g
+CFLAGS = -Wall $(CFLAGS_XML2) $(CFLAGS_CURL) -std=gnu99 -g -DDEBUG1_
 LD = gcc
 LDFLAGS = -std=gnu99 -g 
 LDLIBS_XML2 = $(shell xml2-config --libs)
@@ -14,14 +14,14 @@ LDLIBS = $(LDLIBS_XML2) $(LDLIBS_CURL) ${LIBS_PTHREAD}
 
 # For students 
 LIB_UTIL = crc.o
-SRCS     = crc.c
-OBJS     = main.o $(LIB_UTIL) 
+SRCS   = crc.c
+OBJS   = main.o $(LIB_UTIL) 
 
-TARGETS= findpng2 
+TARGETS= findpng3 
 
 all: ${TARGETS}
 
-findpng2: $(OBJS) 
+findpng3: $(OBJS) 
 	$(LD) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 
 %.o: %.c 
